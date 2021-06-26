@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ControleSessao : MonoBehaviour
 {
-    static ControleSessao instance;
-    public List<Topico> topicos = new List<Topico>();
+    static public ControleSessao instance;
 
-    private Topico curTopico;
+    public List<Topico> topicos = new List<Topico>();
+    public int vidas;
+
+    public Topico curTopico;
 
     private void Awake()
     {
@@ -34,6 +36,8 @@ public class ControleSessao : MonoBehaviour
     public void iniciaPartida(int topico)
     {
         this.curTopico = topicos[topico];
+        this.vidas = 1;
+        SceneManager.LoadScene(4);
     }
 
     public void getNextMiniGame()

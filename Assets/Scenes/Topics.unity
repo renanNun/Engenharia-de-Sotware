@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 393038150}
   - component: {fileID: 393038149}
   m_Layer: 5
-  m_Name: Start
+  m_Name: StartED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,19 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Topics
+          m_StringArgument: MinigameManager
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 393038149}
+        m_TargetAssemblyTypeName: ScreenLoader, Assembly-CSharp
+        m_MethodName: IniciaPartida
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &393038151
