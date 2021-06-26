@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/StartMenu.unity
+    guid: 3b83e33e29aa522489c52709eb6c343a
+  - enabled: 1
+    path: Assets/Scenes/Topics.unity
+    guid: 318b49ccfe6da3e40b8b778577a238dd
+  - enabled: 1
+    path: Assets/Scenes/Configuration.unity
+    guid: e400a72c6ee19ec4fb8eb074b48db8c6
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Estrutura de Dados/QuizED.unity
+    guid: f20db865a17795743adb81a986a653f1
+  - enabled: 1
+    path: Assets/Scenes/MinigameManager.unity
+    guid: 8d7c77312773f6a4abdbcac2099e353e
   m_configObjects: {}
