@@ -18,7 +18,14 @@ public class InterMinigameController : MonoBehaviour
     {
         if(Time.time - startTime > pauseTime)
         {
-            ControleSessao.instance.getNextMiniGame();
+            if(ControleSessao.instance.vidas > 0)
+            { 
+                ControleSessao.instance.getNextMiniGame();
+            }
+            else
+            {
+                ControleSessao.instance.finalizaPartida();
+            }
         }
     }
 }

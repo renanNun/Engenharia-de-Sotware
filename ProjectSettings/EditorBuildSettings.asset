@@ -15,9 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Configuration.unity
     guid: e400a72c6ee19ec4fb8eb074b48db8c6
   - enabled: 1
+    path: Assets/Scenes/InterMinigameManager.unity
+    guid: 8d7c77312773f6a4abdbcac2099e353e
+  - enabled: 1
+    path: Assets/Scenes/FinalScore.unity
+    guid: 7d978a17d393f214a9e9002bd31d282c
+  - enabled: 1
     path: Assets/Scenes/Minigames/Estrutura de Dados/QuizED.unity
     guid: f20db865a17795743adb81a986a653f1
-  - enabled: 1
-    path: Assets/Scenes/MinigameManager.unity
-    guid: 8d7c77312773f6a4abdbcac2099e353e
   m_configObjects: {}

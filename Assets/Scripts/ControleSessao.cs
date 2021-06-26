@@ -9,8 +9,10 @@ public class ControleSessao : MonoBehaviour
 
     public List<Topico> topicos = new List<Topico>();
     public int vidas;
+    public int pontos;
 
     public Topico curTopico;
+    public bool lastMinigameVenceu; 
 
     private void Awake()
     {
@@ -30,18 +32,40 @@ public class ControleSessao : MonoBehaviour
     {
         topicos.Add(new Topico("Estrutura de Dados",
             "Uma estrutura de dados (ED), em ciência da computação, é uma coleção tanto de valores quanto de operações.",
-            new List<int>() { 3 })); // Cenas do Build Settings que são desse tópico
+            new List<int>() { 5 })); // Cenas do Build Settings que são desse tópico
     }
 
     public void iniciaPartida(int topico)
     {
         this.curTopico = topicos[topico];
         this.vidas = 1;
-        SceneManager.LoadScene(4);
+        this.pontos = 0;
+        SceneManager.LoadScene(3);
     }
 
     public void getNextMiniGame()
     {
         SceneManager.LoadScene(curTopico.minigames[(int)(UnityEngine.Random.value * curTopico.minigames.Count)]);
+    }
+
+    public void finalizaMiniGame(bool venceu)
+    {
+        if (!venceu)
+        {
+            vidas--;
+        }
+        if(vidas != 0)
+        {
+            pontos++;
+        }
+
+        SceneManager.LoadScene(3);
+        
+
+    }
+
+    public void finalizaPartida()
+    {
+        SceneManager.LoadScene(4);
     }
 }
