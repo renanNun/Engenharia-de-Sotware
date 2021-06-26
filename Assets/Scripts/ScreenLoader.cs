@@ -8,4 +8,9 @@ public class ScreenLoader : MonoBehaviour
     public void LoadScene(string sceneName) {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void IniciaPartida(int topico)
+    {
+        ControleSessao.instance.iniciaPartida(topico);
+    }
 }
