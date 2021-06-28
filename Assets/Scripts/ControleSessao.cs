@@ -31,8 +31,8 @@ public class ControleSessao : MonoBehaviour
     private void Start()
     {
         topicos.Add(new Topico("Estrutura de Dados",
-            "Uma estrutura de dados (ED), em ciência da computação, é uma coleção tanto de valores quanto de operações.",
-            new List<int>() { 5 })); // Cenas do Build Settings que são desse tópico
+            "Uma estrutura de dados (ED), em ciï¿½ncia da computaï¿½ï¿½o, ï¿½ uma coleï¿½ï¿½o tanto de valores quanto de operaï¿½ï¿½es.",
+            new List<int>() { 5 })); // Cenas do Build Settings que sï¿½o desse tï¿½pico
     }
 
     public void iniciaPartida(int topico)
