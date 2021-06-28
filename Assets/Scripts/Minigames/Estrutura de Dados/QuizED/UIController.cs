@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
 
-    private Text questionText;
+    public Text questionText;
     public List<Button> answerButtons;
 
     public void SetupUIforQuestion(QuizQuestion question) {
-        questionText.text = question.getQuestion();
+        this.questionText.text = question.getQuestion();
 
         List<string> answers = question.getAnswers();
 

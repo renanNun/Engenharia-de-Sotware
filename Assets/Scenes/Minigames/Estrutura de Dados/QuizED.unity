@@ -740,6 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26b2e61f05940945ab07d3f722ffdf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIController: {fileID: 1445979682}
 --- !u!114 &1445979682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,6 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7add59790f9a74ca0a010994c282c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questionText: {fileID: 2061447474}
   answerButtons:
   - {fileID: 1642428981}
   - {fileID: 922038829}

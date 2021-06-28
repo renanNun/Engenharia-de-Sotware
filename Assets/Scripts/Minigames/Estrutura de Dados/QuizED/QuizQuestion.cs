@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class QuizQuestion : ScriptableObject
+public class QuizQuestion
 {
     private string question;
     private List<string> answers;

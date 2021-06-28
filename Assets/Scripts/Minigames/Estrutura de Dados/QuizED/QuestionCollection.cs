@@ -13,11 +13,11 @@ public class QuestionCollection
                                                     new List<string>(){"O(n)", "O(log(n))", "O(n!)"},
                                                     1);
 
-        this.questions = new List<QuizQuestion>(){question1};
+        questions = new List<QuizQuestion>(){question1};
     }
 
     static public QuizQuestion GetQuestion() {
-        QuizQuestion question = this.questions.OrderBy(t => UnityEngine.Random.Range(0, int.MaxValue))
+        QuizQuestion question = questions.OrderBy(t => UnityEngine.Random.Range(0, int.MaxValue))
                                             .FirstOrDefault();
 
         return question;
