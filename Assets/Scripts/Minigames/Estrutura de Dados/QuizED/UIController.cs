@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
 
     public Text questionText;
     public List<Button> answerButtons;
+    public curMinigameManager curMM;
 
     public void SetupUIforQuestion(QuizQuestion question) {
         this.questionText.text = question.getQuestion();
@@ -23,10 +24,10 @@ public class UIController : MonoBehaviour
 
     public void HandleSubmittedAnswer(bool isCorrect) {
         ToggleAnswerButtons(false);
-
         // finaliza sessão com o resultado do quiz
-        ControleSessao.instance.finalizaMiniGame(isCorrect);
-    }
+        if (isCorrect) curMM.startVictory();
+        else curMM.startLoss();
+        }
 
     private void ToggleAnswerButtons(bool value) {
         for (int i = 0; i < answerButtons.Count; i++) {

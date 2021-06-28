@@ -488,7 +488,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -200}
-  m_SizeDelta: {x: 250.6, y: 100}
+  m_SizeDelta: {x: 675.8948, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &922038829
 MonoBehaviour:
@@ -758,6 +758,7 @@ MonoBehaviour:
   - {fileID: 1642428981}
   - {fileID: 922038829}
   - {fileID: 2010190538}
+  curMM: {fileID: 1445979679}
 --- !u!1 &1577527191
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +875,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250.6, y: 100}
+  m_SizeDelta: {x: 675.8948, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642428981
 MonoBehaviour:
@@ -1086,7 +1087,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -400}
-  m_SizeDelta: {x: 250.6, y: 100}
+  m_SizeDelta: {x: 675.8948, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2010190538
 MonoBehaviour:
@@ -1216,8 +1217,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -450}
-  m_SizeDelta: {x: 451.9795, y: 177.9363}
+  m_AnchoredPosition: {x: 0, y: -573}
+  m_SizeDelta: {x: 963.5659, y: 504.6119}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2061447474
 MonoBehaviour:
@@ -1249,7 +1250,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Question Text

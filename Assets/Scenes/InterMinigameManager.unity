@@ -561,6 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseTime: 2
+  points: {fileID: 1390835899}
 --- !u!4 &1963832887
 Transform:
   m_ObjectHideFlags: 0
