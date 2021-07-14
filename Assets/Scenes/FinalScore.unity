@@ -479,8 +479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66abe9fea1d2d44498d52c64ea58ad31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topico: {fileID: 785853144}
-  pontos: {fileID: 1390835899}
+  topicoTextbox: {fileID: 785853144}
+  pontosTextbox: {fileID: 1390835899}
 --- !u!4 &998145106
 Transform:
   m_ObjectHideFlags: 0
