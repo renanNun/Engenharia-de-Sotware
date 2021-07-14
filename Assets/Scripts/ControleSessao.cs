@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,9 @@ public class ControleSessao : MonoBehaviour
     public int pontos;
 
     public Topico curTopico;
-    public bool lastMinigameVenceu; 
+    public bool lastMinigameVenceu;
+
+    public DadosEstatisticas dados;
 
     private void Awake()
     {
@@ -30,9 +33,20 @@ public class ControleSessao : MonoBehaviour
 
     private void Start()
     {
+        string jsonDados = PlayerPrefs.GetString("dados_estatisticas", "");
+        if(jsonDados!= "")
+        {
+            dados = JsonUtility.FromJson<DadosEstatisticas>(jsonDados);
+        } else
+        {
+            dados = new DadosEstatisticas();
+            dados.highScorePlayers = new List<string>();
+            dados.highScores = new List<int>();
+        }
+
         topicos.Add(new Topico("Estrutura de Dados",
-            "Uma estrutura de dados (ED), em ci�ncia da computa��o, � uma cole��o tanto de valores quanto de opera��es.",
-            new List<int>() { 5 })); // Cenas do Build Settings que s�o desse t�pico
+            "Uma estrutura de dados (ED), em ciencia da computacao, eh uma colecao tanto de valores quanto de operacoes.",
+            new List<int>() { 5 })); // Cenas do Build Settings que sao desse topico
     }
 
     public void iniciaPartida(int topico)
@@ -68,4 +82,17 @@ public class ControleSessao : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
+
+    public void persisteDadosEstatistica()
+    {
+        string jsonDados = JsonUtility.ToJson(dados);
+        PlayerPrefs.SetString("dados_estatisticas", jsonDados);
+    }
+}
+
+[Serializable]
+public class DadosEstatisticas
+{
+    public List<string> highScorePlayers;
+    public List<int> highScores;
 }
