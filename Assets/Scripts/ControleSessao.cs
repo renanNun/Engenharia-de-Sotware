@@ -14,8 +14,10 @@ public class ControleSessao : MonoBehaviour
 
     public Topico curTopico;
     public bool lastMinigameVenceu;
+    public bool foundNewTopScore = false;
 
     public DadosEstatisticas dados;
+   
 
     private void Awake()
     {
@@ -40,7 +42,7 @@ public class ControleSessao : MonoBehaviour
         } else
         {
             dados = new DadosEstatisticas();
-            dados.highScorePlayers = new List<string>();
+            dados.highScoreDates = new List<string>();
             dados.highScores = new List<int>();
         }
 
@@ -80,6 +82,29 @@ public class ControleSessao : MonoBehaviour
 
     public void finalizaPartida()
     {
+        Boolean foundPosition = false;
+        for(int i = 0;i<dados.highScores.Count; i++)
+        {
+            if(pontos >= dados.highScores[i])
+            {
+                foundPosition = true;
+                dados.highScores.Insert(i, pontos);
+                dados.highScoreDates.Insert(i, String.Format("{0}/{1}/{2}", DateTime.Now.Date, 
+                                            DateTime.Now.Month, DateTime.Now.Year));
+                break;
+            }
+        }
+
+        if (!foundPosition)
+        {
+            if(dados.highScores.Count < 10)
+            {
+                dados.highScores.Add(pontos);
+                dados.highScoreDates.Add(String.Format("{0}/{1}/{2}", DateTime.Now.Date,
+                                            DateTime.Now.Month, DateTime.Now.Year));
+            }
+        }
+        persisteDadosEstatistica();
         SceneManager.LoadScene(4);
     }
 
@@ -93,6 +118,6 @@ public class ControleSessao : MonoBehaviour
 [Serializable]
 public class DadosEstatisticas
 {
-    public List<string> highScorePlayers;
+    public List<string> highScoreDates;
     public List<int> highScores;
 }
