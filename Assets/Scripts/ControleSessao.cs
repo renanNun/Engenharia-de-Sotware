@@ -89,8 +89,8 @@ public class ControleSessao : MonoBehaviour
             {
                 foundPosition = true;
                 dados.highScores.Insert(i, pontos);
-                dados.highScoreDates.Insert(i, String.Format("{0}/{1}/{2}", DateTime.Now.Date, 
-                                            DateTime.Now.Month, DateTime.Now.Year));
+                dados.highScoreDates.Insert(i, String.Format("{0}/{1}/{2}", DateTime.Now.Day.ToString("##"), 
+                                            DateTime.Now.Month.ToString("##"), DateTime.Now.Year));
                 break;
             }
         }
@@ -100,8 +100,8 @@ public class ControleSessao : MonoBehaviour
             if(dados.highScores.Count < 10)
             {
                 dados.highScores.Add(pontos);
-                dados.highScoreDates.Add(String.Format("{0}/{1}/{2}", DateTime.Now.Date,
-                                            DateTime.Now.Month, DateTime.Now.Year));
+                dados.highScoreDates.Add(String.Format("{0}/{1}/{2}", DateTime.Now.Day.ToString("##"),
+                                            DateTime.Now.Month.ToString("##"), DateTime.Now.Year));
             }
         }
         persisteDadosEstatistica();
