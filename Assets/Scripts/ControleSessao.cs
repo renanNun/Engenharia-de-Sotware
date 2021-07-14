@@ -32,7 +32,7 @@ public class ControleSessao : MonoBehaviour
     {
         topicos.Add(new Topico("Estrutura de Dados",
             "Uma estrutura de dados (ED), em ci�ncia da computa��o, � uma cole��o tanto de valores quanto de opera��es.",
-            new List<int>() { 5 })); // Cenas do Build Settings que s�o desse t�pico
+            new List<int>() { 5, 6 })); // Cenas do Build Settings que s�o desse t�pico
     }
 
     public void iniciaPartida(int topico)

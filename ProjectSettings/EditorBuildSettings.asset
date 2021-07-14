@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/Estrutura de Dados/QuizED.unity
     guid: f20db865a17795743adb81a986a653f1
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Estrutura de Dados/BinarySearchTree.unity
+    guid: 0e0346f349ffe754da1e2503d057c7ea
   m_configObjects: {}
