@@ -12,12 +12,12 @@ public class BinarySearchTree
 
         // Cria uma lista de valores até o tamanho passado
         // e embaralha os valores para evitar a criação de uma arvore degenerada
-        this.values = new List<int>(number_of_nodes);
-        values.Add(0);
-        for (var i = 1; i < number_of_nodes; i++) {
+        this.values = new List<int>();
+        values.Add(2);
+        for (var i = 1; i <= number_of_nodes; i++) {
             var swap = Random.Range(0, i - 1);
             values.Add(values[swap]);
-            values[swap] = i;
+            values[swap] = i+2;
         }
 
         // Cria a arvore
@@ -28,8 +28,12 @@ public class BinarySearchTree
     public void build_tree(List<int> values, int size) {
 
         for (int i = 1; i < size; i++) {
-            this.root = this.insert_value(this.root, values[i]);
+            this.insert_value(values[i]);
         }
+    }
+
+    public void insert_value(int value) {
+        this.root = this.insert_value(this.root, value);
     }
 
     public Node insert_value(Node node, int value) {
