@@ -13,15 +13,15 @@ public class BSTController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.tree = new BinarySearchTree(10);
+        this.tree = new BinarySearchTree(7);
 
         Node root = this.tree.root;
         // evita filhos serem nulos
         if (root.leftChild == null) {
-            tree.insert_value(root.value-1);
+            tree.InsertValue(root.value-1);
         }
         if (root.rightChild == null) {
-            tree.insert_value(root.value+1);
+            tree.InsertValue(root.value+1);
         }
 
         // pergunta algum valor não presente na visualização

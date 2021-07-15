@@ -12,9 +12,14 @@ public class TreeUIController : MonoBehaviour
     public curMinigameManager curMM;
 
     public void SetupUIforQuestion(BinarySearchTree tree, int questionValue) {
-        this.treeText[0].text = tree.root.value.ToString();
-        this.treeText[1].text = tree.root.leftChild.value.ToString();
-        this.treeText[2].text = tree.root.rightChild.value.ToString();
+
+        List<int> tree_values = tree.PreOrderValues();
+        int size = this.treeText.Count;
+        for (int i = 0; i < size; i++) {
+            this.treeText[i].text = tree_values[i].ToString();
+            if (2*i+1 < size) this.treeText[2*i+1].text = tree_values[2*i+1].ToString();
+            if (2*i+2 < size) this.treeText[2*i+2].text = tree_values[2*i+2].ToString();
+        }
 
         questionText.text = "Encontre o valor " + questionValue;
         
