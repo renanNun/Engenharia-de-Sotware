@@ -13,7 +13,7 @@ public class TreeUIController : MonoBehaviour
 
     public void SetupUIforQuestion(BinarySearchTree tree, int questionValue) {
 
-        List<int> tree_values = tree.PreOrderValues();
+        List<int> tree_values = tree.values;
         int size = this.treeText.Count;
         for (int i = 0; i < size; i++) {
             this.treeText[i].text = tree_values[i].ToString();

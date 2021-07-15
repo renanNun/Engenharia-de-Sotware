@@ -33,25 +33,25 @@ public class BinarySearchTree
         }
     }
 
-    private void PreOrderRec(Node root, List<int> preorder_values) {
-        if (root == null) {
-            return;
+    public List<int> GetPath(int value) {
+        List<int> path = new List<int>();
+
+        Node node = this.root;
+        while (node != null) {
+            if (node.value == value) {
+                return path;
+            } else if (node.value < value) {
+                path.Add(1);
+                node = node.rightChild;
+            } else {
+                path.Add(-1);
+                node = node.leftChild;
+            }
         }
 
-        preorder_values.Add(root.value);
-        this.PreOrderRec(root.rightChild, preorder_values);
-        this.PreOrderRec(root.leftChild, preorder_values);
+        return path;
 
     }
-
-    public List<int> PreOrderValues() {
-        List<int> preorder_values = new List<int>();
-
-        this.PreOrderRec(this.root, preorder_values);
-
-        return preorder_values;
-    }
-
     public void InsertValue(int value) {
         this.root = this.InsertValue(this.root, value);
     }

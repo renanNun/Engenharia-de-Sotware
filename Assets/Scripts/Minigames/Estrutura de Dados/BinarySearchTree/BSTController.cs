@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BSTController : MonoBehaviour
@@ -8,7 +9,10 @@ public class BSTController : MonoBehaviour
     private BinarySearchTree tree;
     public TreeUIController uIController;
     public int questionValue;
-    public int correctAnswer;
+    public List<int> correctAnswer;
+    public List<int> answerList;
+    public GameObject cursor;
+    public int actualNode;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +32,10 @@ public class BSTController : MonoBehaviour
         int rand_pos = Random.Range(3, tree.values.Count-1);
         this.questionValue = tree.values[rand_pos];
 
-        if (root.value > this.questionValue) {
-            this.correctAnswer = -1;
-        } else {
-            this.correctAnswer = 1;
-        }
+        this.correctAnswer = tree.GetPath(this.questionValue);
+
+        this.actualNode = 0;
+        this.answerList = new List<int>();
 
         ShowQuestion();
     }
@@ -42,8 +45,23 @@ public class BSTController : MonoBehaviour
     }
 
     public void AnswerQuestion(int answerNumber) {
-        bool isCorrect = answerNumber == this.correctAnswer;
-        uIController.HandleSubmittedAnswer(isCorrect);
+        
+        this.answerList.Add(answerNumber);
+
+        if (answerNumber < 0) {
+            this.actualNode = 2*this.actualNode+1;
+        } else {
+            this.actualNode = 2*this.actualNode+2;
+        }
+
+        var node = uIController.treeText[this.actualNode].transform.parent;
+        cursor.transform.position = node.transform.position;
+
+        if (answerList.Count >= 2) {
+            bool isCorrect = Enumerable.SequenceEqual(this.correctAnswer, this.answerList);
+            uIController.HandleSubmittedAnswer(isCorrect);
+        }
+
     }
 
 }
