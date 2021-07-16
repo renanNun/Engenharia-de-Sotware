@@ -5,18 +5,12 @@ using UnityEngine.UI;
 
 public class FinalScoreManager : MonoBehaviour
 {
-    public Text topico;
-    public Text pontos;
-    // Start is called before the first frame update
+    public Text topicoTextbox;
+    public Text pontosTextbox;
+
     void Start()
     {
-        topico.text = ControleSessao.instance.curTopico.nome;
-        pontos.text = ControleSessao.instance.pontos.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        topicoTextbox.text = ControleSessao.instance.curTopico.nome;
+        pontosTextbox.text = ControleSessao.instance.pontos.ToString();
     }
 }
