@@ -11,6 +11,7 @@ public class ControleConfiguration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //this.audioMixer = new AudioMixer();
         this.muted = false;
     }
 
@@ -32,6 +33,6 @@ public class ControleConfiguration : MonoBehaviour
 
     public void setVolume(float soundLevel)
     {
-        audioMixer.SetFloat("musicVol", soundLevel);
+        //this.audioMixer.SetFloat("musicVol", soundLevel);
     }
 }
