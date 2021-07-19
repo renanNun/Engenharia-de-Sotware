@@ -17,18 +17,18 @@ public class ControleConfiguracao : MonoBehaviour
 
     void start()
     {
-        fontsTypes;
+        //fontsTypes;
 
-        fontDropdown.clearOptions();
+        //fontDropdown.clearOptions();
 
         List<string> options = new List<string>();
 
-        fontDropdown.AddOptions(fontsTypes);
+        //fontDropdown.AddOptions(fontsTypes);
     }
 
     public void setVolume(float volume)
     {
-        audioMixer.setFloat("volume",volume);
+        //audioMixer.setFloat("volume",volume);
     }
 
     public void setFontSize(int fontSize)
@@ -38,7 +38,7 @@ public class ControleConfiguracao : MonoBehaviour
 
     public void isMute(bool isMuted)
     {
-        this->muted = isMuted;
+        this.muted = isMuted;
     }
 
     public void deleteCache()
