@@ -40,4 +40,9 @@ public class ControleConfiguracao : MonoBehaviour
     {
         this->muted = isMuted;
     }
+
+    public void deleteCache()
+    {
+        
+    }
 }
