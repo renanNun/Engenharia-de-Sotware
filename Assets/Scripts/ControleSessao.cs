@@ -113,6 +113,14 @@ public class ControleSessao : MonoBehaviour
         string jsonDados = JsonUtility.ToJson(dados);
         PlayerPrefs.SetString("dados_estatisticas", jsonDados);
     }
+
+    public void resetaDados()
+    {
+        PlayerPrefs.SetString("dados_estatisticas", "");
+        dados = new DadosEstatisticas();
+        dados.highScoreDates = new List<string>();
+        dados.highScores = new List<int>();
+    }
 }
 
 [Serializable]

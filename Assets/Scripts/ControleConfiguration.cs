@@ -15,11 +15,6 @@ public class ControleConfiguration : MonoBehaviour
         this.muted = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void setMuted()
     {
@@ -28,7 +23,7 @@ public class ControleConfiguration : MonoBehaviour
 
     public void restart()
     {
-
+        ControleSessao.instance.resetaDados();
     }
 
     public void setVolume(float soundLevel)
