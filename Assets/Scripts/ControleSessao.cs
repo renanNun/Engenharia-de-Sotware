@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,14 @@ public class ControleSessao : MonoBehaviour
 
     public List<Topico> topicos = new List<Topico>();
     public int vidas;
+    public int pontos;
 
     public Topico curTopico;
+    public bool lastMinigameVenceu;
+    public bool foundNewTopScore = false;
+
+    public DadosEstatisticas dados;
+   
 
     private void Awake()
     {
@@ -28,20 +35,89 @@ public class ControleSessao : MonoBehaviour
 
     private void Start()
     {
+        string jsonDados = PlayerPrefs.GetString("dados_estatisticas", "");
+        if(jsonDados!= "")
+        {
+            dados = JsonUtility.FromJson<DadosEstatisticas>(jsonDados);
+        } else
+        {
+            dados = new DadosEstatisticas();
+            dados.highScoreDates = new List<string>();
+            dados.highScores = new List<int>();
+        }
+
         topicos.Add(new Topico("Estrutura de Dados",
-            "Uma estrutura de dados (ED), em ciência da computação, é uma coleção tanto de valores quanto de operações.",
-            new List<int>() { 3 })); // Cenas do Build Settings que são desse tópico
+            "Uma estrutura de dados (ED), em ciï¿½ncia da computaï¿½ï¿½o, ï¿½ uma coleï¿½ï¿½o tanto de valores quanto de operaï¿½ï¿½es.",
+            new List<int>() { 5, 6 })); // Cenas do Build Settings que sï¿½o desse tï¿½pico
     }
 
     public void iniciaPartida(int topico)
     {
         this.curTopico = topicos[topico];
         this.vidas = 1;
-        SceneManager.LoadScene(4);
+        this.pontos = 0;
+        SceneManager.LoadScene(3);
     }
 
     public void getNextMiniGame()
     {
         SceneManager.LoadScene(curTopico.minigames[(int)(UnityEngine.Random.value * curTopico.minigames.Count)]);
     }
+
+    public void finalizaMiniGame(bool venceu)
+    {
+        if (!venceu)
+        {
+            vidas--;
+        }
+        if(vidas != 0)
+        {
+            pontos++;
+        }
+
+        SceneManager.LoadScene(3);
+        
+
+    }
+
+    public void finalizaPartida()
+    {
+        Boolean foundPosition = false;
+        for(int i = 0;i<dados.highScores.Count; i++)
+        {
+            if(pontos >= dados.highScores[i])
+            {
+                foundPosition = true;
+                dados.highScores.Insert(i, pontos);
+                dados.highScoreDates.Insert(i, String.Format("{0}/{1}/{2}", DateTime.Now.Day.ToString("##"), 
+                                            DateTime.Now.Month.ToString("##"), DateTime.Now.Year));
+                break;
+            }
+        }
+
+        if (!foundPosition)
+        {
+            if(dados.highScores.Count < 10)
+            {
+                dados.highScores.Add(pontos);
+                dados.highScoreDates.Add(String.Format("{0}/{1}/{2}", DateTime.Now.Day.ToString("##"),
+                                            DateTime.Now.Month.ToString("##"), DateTime.Now.Year));
+            }
+        }
+        persisteDadosEstatistica();
+        SceneManager.LoadScene(4);
+    }
+
+    public void persisteDadosEstatistica()
+    {
+        string jsonDados = JsonUtility.ToJson(dados);
+        PlayerPrefs.SetString("dados_estatisticas", jsonDados);
+    }
+}
+
+[Serializable]
+public class DadosEstatisticas
+{
+    public List<string> highScoreDates;
+    public List<int> highScores;
 }
