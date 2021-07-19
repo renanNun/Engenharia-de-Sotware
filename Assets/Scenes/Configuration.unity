@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 885718208}
   - component: {fileID: 885718207}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: configuration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 936931751}
   - component: {fileID: 936931750}
   m_Layer: 5
-  m_Name: nome
+  m_Name: titulo volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
