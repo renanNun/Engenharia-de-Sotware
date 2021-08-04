@@ -7,19 +7,31 @@ public class StatsManager : MonoBehaviour
     public GameObject minigameSelector;
     public GameObject plotDisplay;
     public Transform plotDisplayContentTransform;
-    public List<Object> plots = new List<Object>();
+    public List<GameObject> plots = new List<GameObject>();
+    public GameObject plotTemplate;
     
 
     public void showPlots(int owner)
     {
+        foreach(GameObject plot in plots)
+        {
+            Destroy(plot);
+        }
         minigameSelector.SetActive(false);
    
         List<GameStat> showable = ControleSessao.instance.getEstatisticasByOwner(owner);
+        foreach(GameStat stat in showable)
+        {
+            plotData(stat);
+        }
         plotDisplay.SetActive(true);
     }
 
     public void plotData(GameStat data)
     {
-
+        GameObject newPlot = (GameObject)Instantiate(plotTemplate, plotDisplayContentTransform);
+        PlotManager newPlotManager = newPlot.GetComponent<PlotManager>();
+        newPlotManager.adjustPlotToData(data.data, data.name);
+        plots.Add(newPlot);
     }
 }
