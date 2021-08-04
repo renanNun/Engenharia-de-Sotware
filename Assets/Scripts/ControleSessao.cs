@@ -15,6 +15,7 @@ public class ControleSessao : MonoBehaviour
     public Topico curTopico;
     public bool lastMinigameVenceu;
     public bool foundNewTopScore = false;
+    public int curMinigame = -1;
 
     public DadosEstatisticas dados;
    
@@ -44,11 +45,12 @@ public class ControleSessao : MonoBehaviour
             dados = new DadosEstatisticas();
             dados.highScoreDates = new List<string>();
             dados.highScores = new List<int>();
+            dados.gameStats = new List<GameStat>();
         }
 
         topicos.Add(new Topico("Estrutura de Dados",
-            "Uma estrutura de dados (ED), em ci�ncia da computa��o, � uma cole��o tanto de valores quanto de opera��es.",
-            new List<int>() { 5, 6 })); // Cenas do Build Settings que s�o desse t�pico
+            "Uma estrutura de dados (ED), em ciencia da computacao, e uma colecao tanto de valores quanto de operadores.",
+            new List<int>() { 5, 6 })); // Cenas do Build Settings que sao desse topico
     }
 
     public void iniciaPartida(int topico)
@@ -61,7 +63,8 @@ public class ControleSessao : MonoBehaviour
 
     public void getNextMiniGame()
     {
-        SceneManager.LoadScene(curTopico.minigames[(int)(UnityEngine.Random.value * curTopico.minigames.Count)]);
+        curMinigame = (int)(UnityEngine.Random.value * curTopico.minigames.Count);
+        SceneManager.LoadScene(curTopico.minigames[curMinigame]);
     }
 
     public void finalizaMiniGame(bool venceu)
@@ -108,6 +111,68 @@ public class ControleSessao : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
+    public void salvaEstatistica(GameStat toSave)
+    {
+        Boolean dataExists = false;
+        for (int i = 0; i<dados.gameStats.Count; i++)
+        {
+            GameStat cur = dados.gameStats[i];
+            if(cur.owner == toSave.owner && cur.ownerStatID == toSave.ownerStatID)
+            {
+                dataExists = true;
+                dados.gameStats[i] = toSave;
+                break;
+            }
+        }
+        if (!dataExists)
+        {
+            dados.gameStats.Add(toSave);
+        }
+        // Nao Precisa persistir os dados aqui, pois no fim da partida, todos os dados vao ser persistidos de uma vez.
+    }
+
+    public void appendEstatistica(int owner, int statID, string name, float stat)
+    {
+        for (int i = 0; i < dados.gameStats.Count; i++)
+        {
+            GameStat cur = dados.gameStats[i];
+            if (cur.owner == owner && cur.ownerStatID == statID)
+            {
+                dados.gameStats[i].data.Add(stat);
+            }
+        }
+
+        // Caso a estatistica nao exista, o metodo cria um novo GameStat com o nome e os dados passados
+        GameStat newStat = new GameStat();
+        newStat.owner = owner;
+        newStat.ownerStatID = statID;
+        newStat.name = name;
+        newStat.data = new List<float>();
+        newStat.data.Add(stat);
+        dados.gameStats.Add(newStat);
+    }
+
+    public GameStat getEstatistica(int owner, int statID, string name)
+    {
+        for (int i = 0; i < dados.gameStats.Count; i++)
+        {
+            GameStat cur = dados.gameStats[i];
+            if (cur.owner == owner && cur.ownerStatID == statID)
+            {
+                return dados.gameStats[i];
+            }
+        }
+
+        // Caso a estatistica nao exista, o metodo cria um novo GameStat com o nome e os dados passados
+        GameStat newStat = new GameStat();
+        newStat.owner = owner;
+        newStat.ownerStatID = statID;
+            newStat.name = name;
+        newStat.data = new List<float>();
+        dados.gameStats.Add(newStat);
+        return newStat;
+    }
+
     public void persisteDadosEstatistica()
     {
         string jsonDados = JsonUtility.ToJson(dados);
@@ -122,10 +187,21 @@ public class ControleSessao : MonoBehaviour
         dados.highScores = new List<int>();
     }
 }
+[Serializable]
+public class GameStat
+{
+    public int owner;
+    public int ownerStatID; // Caso um jogo tenha multiplas estatisticas o dono vai numera-las
+    public string name;
+    public List<float> data;
+
+}
+
 
 [Serializable]
 public class DadosEstatisticas
 {
     public List<string> highScoreDates;
     public List<int> highScores;
+    public List<GameStat> gameStats;
 }
