@@ -63,7 +63,7 @@ public class ControleSessao : MonoBehaviour
 
     public void getNextMiniGame()
     {
-        curMinigame = (int)(UnityEngine.Random.value * curTopico.minigames.Count);
+        curMinigame = curTopico.minigames[(int)(UnityEngine.Random.value * curTopico.minigames.Count)];
         SceneManager.LoadScene(curTopico.minigames[curMinigame]);
     }
 
@@ -150,6 +150,13 @@ public class ControleSessao : MonoBehaviour
         newStat.data = new List<float>();
         newStat.data.Add(stat);
         dados.gameStats.Add(newStat);
+    }
+    
+
+    public List<GameStat> getEstatisticasByOwner(int owner)
+    {
+        List<GameStat> owned = dados.gameStats.FindAll(x => x.owner == owner);
+        return owned;
     }
 
     public GameStat getEstatistica(int owner, int statID, string name)
