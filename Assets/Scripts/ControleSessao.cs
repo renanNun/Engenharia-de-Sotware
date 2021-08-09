@@ -18,8 +18,13 @@ public class ControleSessao : MonoBehaviour
     public int curMinigame = -1;
 
     public DadosEstatisticas dados;
-   
 
+    public Dictionary<Tuple<int, int>, Dictionary<string, dynamic>> infoMinigames = new Dictionary<Tuple<int, int>, Dictionary<string, dynamic>>();
+    // Quando usando esse dicionario, a chave eh o id do minigame, seguido do id da estatistica especifica do app.
+    // Quando um minigame for iniciado pela primeira vez, para cada dicionario de estatistica dele, atribua uma funcao ["save"]()
+    // Essa funcao sera rodada no fim da sessao do usuario, use ela para pegar os dados do seu dicionario, em seguida salve-os com 
+    // "salvaEstatistica" ou "appendEstatistica"
+      
     private void Awake()
     {
         if(instance != null)
@@ -64,7 +69,7 @@ public class ControleSessao : MonoBehaviour
     public void getNextMiniGame()
     {
         curMinigame = curTopico.minigames[(int)(UnityEngine.Random.value * curTopico.minigames.Count)];
-        SceneManager.LoadScene(curTopico.minigames[curMinigame]);
+        SceneManager.LoadScene(curMinigame);
     }
 
     public void finalizaMiniGame(bool venceu)
