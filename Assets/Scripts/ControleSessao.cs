@@ -20,11 +20,12 @@ public class ControleSessao : MonoBehaviour
     public DadosEstatisticas dados;
 
     public Dictionary<Tuple<int, int>, Dictionary<string, dynamic>> infoMinigames = new Dictionary<Tuple<int, int>, Dictionary<string, dynamic>>();
+    public List<Action> infoMinigamesSave = new List<Action>();
     // Quando usando esse dicionario, a chave eh o id do minigame, seguido do id da estatistica especifica do app.
-    // Quando um minigame for iniciado pela primeira vez, para cada dicionario de estatistica dele, atribua uma funcao ["save"]()
+    // Quando um minigame for iniciado pela primeira vez, para cada dicionario de estatistica dele, adicione uma funcao de save ao infoMinigamesSave
     // Essa funcao sera rodada no fim da sessao do usuario, use ela para pegar os dados do seu dicionario, em seguida salve-os com 
     // "salvaEstatistica" ou "appendEstatistica"
-      
+
     private void Awake()
     {
         if(instance != null)
@@ -160,7 +161,9 @@ public class ControleSessao : MonoBehaviour
 
     public List<GameStat> getEstatisticasByOwner(int owner)
     {
+
         List<GameStat> owned = dados.gameStats.FindAll(x => x.owner == owner);
+        Debug.Log(dados.gameStats.Count);
         return owned;
     }
 
@@ -187,6 +190,10 @@ public class ControleSessao : MonoBehaviour
 
     public void persisteDadosEstatistica()
     {
+        foreach(Action save in infoMinigamesSave)
+        {
+            save();
+        }
         string jsonDados = JsonUtility.ToJson(dados);
         PlayerPrefs.SetString("dados_estatisticas", jsonDados);
     }

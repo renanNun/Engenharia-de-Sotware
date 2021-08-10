@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class QuizController : MonoBehaviour
 {
-    private Tuple<int, int> statID = (5, 1);
+    private Tuple<int, int> statID = (5, 1).ToTuple();
     private QuizQuestion currentQuestion;
     public UIController uIController;
   
@@ -37,18 +37,18 @@ public class QuizController : MonoBehaviour
     }
 
     public void testInfoSetup()
-    { 
-        if(!ControleSessao.instance.infoMinigames.ContainsKey(statID))
+    {
+        if (!ControleSessao.instance.infoMinigames.ContainsKey(statID))
         {
             ControleSessao.instance.infoMinigames[statID] = new Dictionary<string, dynamic>();
-            ControleSessao.instance.infoMinigames[statID]["save"] = salvaTaxaDeAcerto;
+            ControleSessao.instance.infoMinigamesSave.Add(salvaTaxaDeAcerto);
         }
     }
 
     public void incrementaAcertosSessao()
     {
 
-        if (!ControleSessao.instance.infoMinigames[statID].ContainsKey("acertos"))
+        if (ControleSessao.instance.infoMinigames[statID].ContainsKey("acertos"))
         {
             ControleSessao.instance.infoMinigames[statID]["acertos"]++;
         }
@@ -62,7 +62,7 @@ public class QuizController : MonoBehaviour
     {
 
 
-        if (!ControleSessao.instance.infoMinigames[statID].ContainsKey("erros"))
+        if (ControleSessao.instance.infoMinigames[statID].ContainsKey("erros"))
         {
             ControleSessao.instance.infoMinigames[statID]["erros"]++;
         }
@@ -79,6 +79,7 @@ public class QuizController : MonoBehaviour
         int erros = ControleSessao.instance.infoMinigames[statID].ContainsKey("erros") ?
             ControleSessao.instance.infoMinigames[statID]["erros"] : 0;
         float total = (float) (acertos + erros);
+        Debug.Log(total);
         ControleSessao.instance.appendEstatistica(5, 1, "Taxa de acertos nas ultimas partidas", acertos / total);
     }
     

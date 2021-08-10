@@ -18,20 +18,21 @@ public class StatsManager : MonoBehaviour
             Destroy(plot);
         }
         minigameSelector.SetActive(false);
-   
+
+        plotDisplay.SetActive(true);
+
         List<GameStat> showable = ControleSessao.instance.getEstatisticasByOwner(owner);
         foreach(GameStat stat in showable)
         {
             plotData(stat);
         }
-        plotDisplay.SetActive(true);
     }
 
     public void plotData(GameStat data)
     {
         GameObject newPlot = (GameObject)Instantiate(plotTemplate, plotDisplayContentTransform);
         PlotManager newPlotManager = newPlot.GetComponent<PlotManager>();
-        newPlotManager.adjustPlotToData(data.data, data.name);
         plots.Add(newPlot);
+        newPlotManager.adjustPlotToData(data.data, data.name);
     }
 }
