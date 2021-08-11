@@ -79,8 +79,9 @@ public class QuizController : MonoBehaviour
         int erros = ControleSessao.instance.infoMinigames[statID].ContainsKey("erros") ?
             ControleSessao.instance.infoMinigames[statID]["erros"] : 0;
         float total = (float) (acertos + erros);
-        Debug.Log(total);
         ControleSessao.instance.appendEstatistica(5, 1, "Taxa de acertos nas ultimas partidas", acertos / total);
+
+        ControleSessao.instance.infoMinigames[statID] = new Dictionary<string, dynamic>();
     }
     
 }

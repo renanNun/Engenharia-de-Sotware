@@ -145,6 +145,7 @@ public class ControleSessao : MonoBehaviour
             if (cur.owner == owner && cur.ownerStatID == statID)
             {
                 dados.gameStats[i].data.Add(stat);
+                return;
             }
         }
 
@@ -163,7 +164,6 @@ public class ControleSessao : MonoBehaviour
     {
 
         List<GameStat> owned = dados.gameStats.FindAll(x => x.owner == owner);
-        Debug.Log(dados.gameStats.Count);
         return owned;
     }
 
@@ -204,6 +204,7 @@ public class ControleSessao : MonoBehaviour
         dados = new DadosEstatisticas();
         dados.highScoreDates = new List<string>();
         dados.highScores = new List<int>();
+        dados.gameStats = new List<GameStat>();
     }
 }
 [Serializable]
