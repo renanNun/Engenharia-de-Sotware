@@ -556,6 +556,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bars: []
+  labels: []
+  labelRects: []
   titleText: {fileID: 0}
 --- !u!1 &4264379284933837270
 GameObject:
@@ -730,6 +732,22 @@ MonoBehaviour:
   - {fileID: 3979293454639307053}
   - {fileID: 6648936051288270063}
   - {fileID: 5620084481268424176}
+  labels:
+  - {fileID: 7157209989326831484}
+  - {fileID: 2167843717712020672}
+  - {fileID: 2850273525214125272}
+  - {fileID: 4364590878396408864}
+  - {fileID: 6703308876234013880}
+  - {fileID: 4857453727021891367}
+  - {fileID: 4118135238158038375}
+  labelRects:
+  - {fileID: 4025486464112414950}
+  - {fileID: 1358001998247306687}
+  - {fileID: 1284502116419454070}
+  - {fileID: 9129309117000573734}
+  - {fileID: 3020198238348789382}
+  - {fileID: 1635792318154625039}
+  - {fileID: 2789669075064281492}
   titleText: {fileID: 4264379284771880993}
 --- !u!1 &4909425732743669353
 GameObject:
