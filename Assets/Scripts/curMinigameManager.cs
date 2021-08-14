@@ -5,7 +5,8 @@ using UnityEngine;
 public class curMinigameManager : MonoBehaviour
 {
 
-    public MusicManager sound;
+    public MusicManager winSound;
+    public MusicManager lossSound;
 
     void Start()
     {
@@ -19,12 +20,13 @@ public class curMinigameManager : MonoBehaviour
 
     public void startLoss()
     {
+        lossSound.Play();
         ControleSessao.instance.finalizaMiniGame(false);
     }
 
     public void startVictory()
     {
-        sound.Play();
+        winSound.Play();
         ControleSessao.instance.finalizaMiniGame(true);
     }
 }
