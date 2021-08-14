@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class curMinigameManager : MonoBehaviour
 {
+
+    public MusicManager sound;
+
     void Start()
     {
         
@@ -21,6 +24,7 @@ public class curMinigameManager : MonoBehaviour
 
     public void startVictory()
     {
+        sound.Play();
         ControleSessao.instance.finalizaMiniGame(true);
     }
 }
