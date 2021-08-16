@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class ControleConfiguration : MonoBehaviour
@@ -27,6 +28,12 @@ public class ControleConfiguration : MonoBehaviour
         } else {
             this.volume.setVolume(1.0F);
         }
+
+        Slider slider = GameObject.Find("Slider").GetComponent<Slider>();
+
+        // set the slider value as the current volume
+        slider.value = volume.getVolume();
+
     }
 
     public void restart()
