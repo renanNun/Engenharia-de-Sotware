@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class curMinigameManager : MonoBehaviour
 {
-
-    public MusicManager winSound;
-    public MusicManager lossSound;
-
     void Start()
     {
         
@@ -20,13 +16,11 @@ public class curMinigameManager : MonoBehaviour
 
     public void startLoss()
     {
-        lossSound.Play();
         ControleSessao.instance.finalizaMiniGame(false);
     }
 
     public void startVictory()
     {
-        winSound.Play();
         ControleSessao.instance.finalizaMiniGame(true);
     }
 }
