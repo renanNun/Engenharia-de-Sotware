@@ -12,6 +12,15 @@ public class TestQuizED
     public void Setup() => SceneManager.LoadScene("QuizED");
 
     [UnityTest]
+    public IEnumerator TestIfHasButtons()
+    {
+        var buttons = Object.FindObjectsOfType<Button>();
+
+        Assert.IsNotNull(buttons);
+        yield return null;
+    }
+
+    [UnityTest]
     public IEnumerator TestIfButtonHasGenericText()
     {
         Object[] buttons = Object.FindObjectsOfType<Button>();
