@@ -12,6 +12,28 @@ public class TestQuizED
     public void Setup() => SceneManager.LoadScene("QuizED");
 
     [UnityTest]
+    public IEnumerator TestIfButtonHasGenericText()
+    {
+        Object[] buttons = Object.FindObjectsOfType<Button>();
+
+        var value;
+
+        // Butão 1
+        value = buttons[0].GetComponentInChildren<Text>().text;
+        Assert.AreNotEqual(value,"A1");
+
+        // Botão 2
+        value = buttons[1].GetComponentInChildren<Text>().text;
+        Assert.AreNotEqual(value,"A2");
+
+        // Botão 3
+        value = buttons[2].GetComponentInChildren<Text>().text;
+        Assert.AreNotEqual(value,"A3");
+        
+        yield return null;
+    }
+
+    [UnityTest]
     public IEnumerable TestCursorMovement()
     {
         var cursor = GameObject.Find("Cursor");
