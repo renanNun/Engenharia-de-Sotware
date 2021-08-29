@@ -69,4 +69,29 @@ public class TestBST
         yield return null;
     }
 
+    [UnityTest]
+    public IEnumerator TestQuestionNumber()
+    {
+        var question = GameObject.FindGameObjectWithTag("Question");
+
+        string[] subs = question.GetComponentInChildren<Text>().text.Split(' ');
+
+        Assert.IsTrue(int.Parse(subs[3]) > 0);
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator TestCursorMovement()
+    {
+        var cursor = GameObject.Find("Cursor");
+        var initialPos = cursor.transform.position;
+
+        var rightButton = Object.FindObjectsOfType<Button>()[0];
+        rightButton.onClick.Invoke();
+        var movedPos = cursor.transform.position;
+
+        Assert.AreNotEqual(initialPos, movedPos);
+        yield return null;
+    }
+
 }
