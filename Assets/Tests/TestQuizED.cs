@@ -32,20 +32,20 @@ public class TestQuizED
     [UnityTest]
     public IEnumerator TestIfButtonHasGenericText()
     {
-        Object[] buttons = Object.FindObjectsOfType<Button>();
-
-        var value;
-
         // Butão 1
-        value = buttons[0].GetComponentInChildren<Text>().text;
+       var button = GameObject.FindGameObjectsWithTag("A1")[0];
+
+        var value = button.GetComponentInChildren<Text>().text;
         Assert.AreNotEqual(value,"A1");
 
         // Botão 2
-        value = buttons[1].GetComponentInChildren<Text>().text;
+        button = GameObject.FindGameObjectsWithTag("A2")[0];
+        value = button.GetComponentInChildren<Text>().text;
         Assert.AreNotEqual(value,"A2");
 
         // Botão 3
-        value = buttons[2].GetComponentInChildren<Text>().text;
+        button = GameObject.FindGameObjectsWithTag("A3")[0];
+        value = button.GetComponentInChildren<Text>().text;
         Assert.AreNotEqual(value,"A3");
         
         yield return null;
