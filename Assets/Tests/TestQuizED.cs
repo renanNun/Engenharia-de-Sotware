@@ -21,6 +21,15 @@ public class TestQuizED
     }
 
     [UnityTest]
+    public IEnumerator TestNumberOfButtons()
+    {
+        var buttons = Object.FindObjectsOfType<Button>();
+
+        Assert.AreEqual(buttons.Length, 3);
+        yield return null;
+    }
+
+    [UnityTest]
     public IEnumerator TestIfButtonHasGenericText()
     {
         Object[] buttons = Object.FindObjectsOfType<Button>();
