@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Node
   - Question
+  - StartText
+  - LeaderboardText
+  - StatsText
+  - ConfigurationText
   layers:
   - Default
   - TransparentFX
