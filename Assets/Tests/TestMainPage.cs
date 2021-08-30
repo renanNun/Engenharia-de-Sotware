@@ -65,4 +65,15 @@ public class TestMainPage
         yield return null;
     }
 
+    [UnityTest]
+    public IEnumerator TestConfigurationButtonText()
+    {
+        var startButton = GameObject.FindGameObjectsWithTag("ConfigurationText")[0];
+
+        var text = startButton.GetComponentInChildren<Text>().text;
+
+        Assert.AreEqual(text, "CONFIGURATION");
+        yield return null;
+    }
+
 }
