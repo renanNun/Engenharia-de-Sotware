@@ -54,4 +54,15 @@ public class TestMainPage
         yield return null;
     }
 
+    [UnityTest]
+    public IEnumerator TestStatsButtonText()
+    {
+        var startButton = GameObject.FindGameObjectsWithTag("StatsText")[0];
+
+        var text = startButton.GetComponentInChildren<Text>().text;
+
+        Assert.AreEqual(text, "STATS");
+        yield return null;
+    }
+
 }
