@@ -32,4 +32,15 @@ public class TestMainPage
         yield return null;
     }
 
+    [UnityTest]
+    public IEnumerator TestStartButtonText()
+    {
+        var startButton = GameObject.FindGameObjectsWithTag("StartText")[0];
+
+        var text = startButton.GetComponentInChildren<Text>().text;
+
+        Assert.AreEqual(text, "START");
+        yield return null;
+    }
+
 }
