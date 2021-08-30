@@ -14,7 +14,7 @@ public class TestBST
         SceneManager.LoadScene("BinarySearchTree");
     }
 
-    // 1
+   
     [UnityTest]
     public IEnumerator TestIfHasButtons()
     {
