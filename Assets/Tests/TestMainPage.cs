@@ -23,4 +23,13 @@ public class TestMainPage
         yield return null;
     }
 
+    [UnityTest]
+    public IEnumerator TestAllButtonRender()
+    {
+        var buttons = Object.FindObjectsOfType<Button>();
+
+        Assert.AreEqual(buttons.Length, 4);
+        yield return null;
+    }
+
 }
