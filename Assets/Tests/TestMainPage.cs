@@ -43,4 +43,15 @@ public class TestMainPage
         yield return null;
     }
 
+    [UnityTest]
+    public IEnumerator TestLeaderboardButtonText()
+    {
+        var startButton = GameObject.FindGameObjectsWithTag("LeaderboardText")[0];
+
+        var text = startButton.GetComponentInChildren<Text>().text;
+
+        Assert.AreEqual(text, "LEADERBOARD");
+        yield return null;
+    }
+
 }
