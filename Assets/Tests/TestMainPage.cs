@@ -11,7 +11,7 @@ public class TestMainPage
     [SetUp]
     public void Setup()
     {
-        SceneManager.LoadScene("BinarySearchTree");
+        SceneManager.LoadScene(0);
     }
 
     [UnityTest]
