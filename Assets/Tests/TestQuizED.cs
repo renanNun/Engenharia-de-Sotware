@@ -30,24 +30,38 @@ public class TestQuizED
     }
 
     [UnityTest]
-    public IEnumerator TestIfButtonHasGenericText()
+    public IEnumerator TestIfButtonHasGenericA1()
     {
         // Butão 1
-       var button = GameObject.FindGameObjectsWithTag("A1")[0];
+        var button = GameObject.FindGameObjectsWithTag("A1")[0];
 
         var value = button.GetComponentInChildren<Text>().text;
-        Assert.AreNotEqual(value,"A1");
+        Assert.AreNotEqual(value, "A1");
 
-        // Botão 2
-        button = GameObject.FindGameObjectsWithTag("A2")[0];
-        value = button.GetComponentInChildren<Text>().text;
-        Assert.AreNotEqual(value,"A2");
+        yield return null;
+    }
+    [UnityTest]
+    public IEnumerator TestIfButtonHasGenericA2()
+    {
+        // Butão 1
+        var button = GameObject.FindGameObjectsWithTag("A2")[0];
 
-        // Botão 3
-        button = GameObject.FindGameObjectsWithTag("A3")[0];
-        value = button.GetComponentInChildren<Text>().text;
-        Assert.AreNotEqual(value,"A3");
-        
+        var value = button.GetComponentInChildren<Text>().text;
+        Assert.AreNotEqual(value, "A2");
+
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator TestIfButtonHasGenericA3()
+    {
+        // Butão 1
+        var button = GameObject.FindGameObjectsWithTag("A3")[0];
+
+        var value = button.GetComponentInChildren<Text>().text;
+        Assert.AreNotEqual(value, "A3");
+
+
         yield return null;
     }
 
