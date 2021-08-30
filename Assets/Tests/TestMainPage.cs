@@ -13,5 +13,14 @@ public class TestMainPage
     {
         SceneManager.LoadScene("BinarySearchTree");
     }
-    
+
+    [UnityTest]
+    public IEnumerator TestButtonRender()
+    {
+        var buttons = Object.FindObjectsOfType<Button>();
+
+        Assert.IsNotNull(buttons);
+        yield return null;
+    }
+
 }
